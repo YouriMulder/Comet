@@ -36,7 +36,11 @@
 *.vcxproj*
 .vs/
 
-
+.vscode
 build.bat
 bin/
 bin-int/
+
+Comet/vendor/GLEW/LICENSE.txt
+Comet/vendor/GLEW/Makefile.txt
+Comet/vendor/GLEW/doc/

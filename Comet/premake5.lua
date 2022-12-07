@@ -24,10 +24,22 @@ project "Comet"
 	includedirs
 	{
 		"src",
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.GLEW}",
+	}
+	
+	links 
+	{
+		"glew32",
+		"opengl32",
+		"GLFW",
 	}
 
-	links 
-	{}
+	libdirs {
+		"vendor/GLEW/lib/Release/x64"
+	}
+
+	postbuildcommands{}
 
 	filter "system:windows"
 		systemversion "latest"
@@ -35,8 +47,11 @@ project "Comet"
 		defines
 		{
 			"COMET_PLATFORM_WINDOWS",
-			"GLFW_INCLUDE_NONE"
+			"GLFW_INCLUDE_NONE",
 		}
+
+		filter { "system:windows" }
+   			postbuildcommands { "{COPY} vendor/GLEW/bin/Release/x64/glew32.dll $(TargetDir)"}
 
 	filter "configurations:Debug"
 		defines "GLCORE_DEBUG"
